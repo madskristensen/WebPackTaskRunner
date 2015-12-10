@@ -205,10 +205,7 @@
     <Content Include="ItemTemplates\WebPack\_Definitions\CSharp.vstemplate" />
     <Content Include="ItemTemplates\WebPack\_Definitions\Web.csharp.vstemplate" />
     <Content Include="ItemTemplates\WebPack\_preprocess.xml" />
-    <Content Include="registry.pkgdef">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="Resources\BrunchPackage.ico" />
+    <Content Include="Resources\Package.ico" />
     <Content Include="Resources\icon.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -224,6 +221,7 @@
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
