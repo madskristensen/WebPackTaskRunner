@@ -10,7 +10,7 @@ namespace WebPackTaskRunner
     [PackageRegistration(UseManagedResourcesOnly = true)]
     [InstalledProductRegistration("#110", "#112", Constants.VERSION, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
-    [Guid(PackageGuids.guidBrunchPackageString)]
+    [Guid(PackageGuids.guidWebPackPackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     public sealed class WebPackPackage : Package
     {

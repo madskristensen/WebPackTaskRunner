@@ -28,9 +28,9 @@ namespace WebPackTaskRunner
         private void InitializeBrunchRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Display Modules", PackageIds.cmdDisplayModules, PackageGuids.guidBrunchPackageCmdSet, false, "--display-modules"));
-            _options.Add(new TaskRunnerOption("Display Reasons", PackageIds.cmdDisplayReasons, PackageGuids.guidBrunchPackageCmdSet, false, "--display-reasons"));
-            _options.Add(new TaskRunnerOption("Display Chunks", PackageIds.cmdDisplayChunks, PackageGuids.guidBrunchPackageCmdSet, false, "--display-chunks"));
+            _options.Add(new TaskRunnerOption("Display Modules", PackageIds.cmdDisplayModules, PackageGuids.guidWebPackPackageCmdSet, false, "--display-modules"));
+            _options.Add(new TaskRunnerOption("Display Reasons", PackageIds.cmdDisplayReasons, PackageGuids.guidWebPackPackageCmdSet, false, "--display-reasons"));
+            _options.Add(new TaskRunnerOption("Display Chunks", PackageIds.cmdDisplayChunks, PackageGuids.guidWebPackPackageCmdSet, false, "--display-chunks"));
         }
 
         public List<ITaskRunnerOption> Options

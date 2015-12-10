@@ -5,9 +5,9 @@
     <Extern href="vsshlids.h"/>
     <Include href="KnownImageIds.vsct"/>
 
-    <Commands package="guidBrunchPackage">
+    <Commands package="guidWebPackPackage">
         <Buttons>
-            <Button guid="guidBrunchPackageCmdSet" id="cmdDisplayModules" priority="0x0400" type="Button">
+            <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayModules" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
                 <Icon guid="ImageCatalogGuid" id="DetailDataView" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
@@ -17,7 +17,7 @@
                     <ButtonText>Display Modules</ButtonText>
                 </Strings>
             </Button>
-			<Button guid="guidBrunchPackageCmdSet" id="cmdDisplayReasons" priority="0x0400" type="Button">
+			<Button guid="guidWebPackPackageCmdSet" id="cmdDisplayReasons" priority="0x0400" type="Button">
 				<Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
 				<Icon guid="ImageCatalogGuid" id="SummaryView" />
 				<CommandFlag>IconIsMoniker</CommandFlag>
@@ -27,7 +27,7 @@
 					<ButtonText>Display Reasons</ButtonText>
 				</Strings>
 			</Button>
-            <Button guid="guidBrunchPackageCmdSet" id="cmdDisplayChunks" priority="0x0400" type="Button">
+            <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayChunks" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
                 <Icon guid="ImageCatalogGuid" id="DirectLinkList" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
@@ -42,9 +42,9 @@
 
     <Symbols>
         <!-- This is the package guid. -->
-        <GuidSymbol name="guidBrunchPackage" value="{c18648a6-4f3b-4b34-9218-471a1e085457}" />
+        <GuidSymbol name="guidWebPackPackage" value="{c18648a6-4f3b-4b34-9218-471a1e085457}" />
 
-        <GuidSymbol name="guidBrunchPackageCmdSet" value="{ef7252d5-aa4c-4765-b747-19099ca6fb18}">
+        <GuidSymbol name="guidWebPackPackageCmdSet" value="{ef7252d5-aa4c-4765-b747-19099ca6fb18}">
             <IDSymbol name="cmdDisplayModules" value="0x0100" />
 			<IDSymbol name="cmdDisplayReasons" value="0x0200" />
             <IDSymbol name="cmdDisplayChunks" value="0x0300" />
