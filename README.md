@@ -50,13 +50,6 @@ devServer: {
     port: 9000
 },
 ```
-### Item Template
-You can easily add a new **webpack.config.js** file to
-your project from the _Add New Item_ dialog.
-
-Just search for "webpack".
-
-![Item template](art/item-template.png)
 
 ### Task Runner Explorer
 Open Task Runner Explorer by right-clicking the WebPack
@@ -94,5 +87,10 @@ with Visual Studio events such as _Project Open_ etc.
 
 ![Bindings](art/bindings.png)
 
+### Item Template
+You can easily add a new **webpack.config.js** file to
+your project from the _Add New Item_ dialog.
 
+Just search for "webpack".
 
+![Item template](art/item-template.png)
