@@ -19,13 +19,32 @@ typing the following in a command line:
 
 >npm install webpack -g
 
+To use the server functionality you also need to install
+webpack-dev-server like so:
+
+>npm install webpack-dev-server -g
+
 ### Config files
 The WebPack Task Runner automatically triggers when it finds
 WebPack configuration files. These file names are supported:
 
 1. webpack.config.js
-1. webpack.config.babel.js
+1. webpack.[name].config.js
 
+### Dev server
+This extension support **webpack-dev-server** and can
+invoke it through the Task Runner Explorer.
+
+Make sure to set up the details in the webpack.config.js
+file like so:
+
+```json
+devServer: {
+    contentBase: '.',
+    host: 'localhost',
+    port: 9000
+},
+```
 ### Item Template
 You can easily add a new **webpack.config.js** file to
 your project from the _Add New Item_ dialog.
