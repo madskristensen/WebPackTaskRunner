@@ -76,7 +76,7 @@ side toolbar. The switches are
 3. --display-chunks
 4. --display-error-details
 
-![Switches](art/switches.png)
+![Switches](art/task-list.png)
 
 All switches are toggle button that can be left
 on or off for as long as needed.

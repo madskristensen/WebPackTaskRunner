@@ -78,11 +78,13 @@ namespace WebPackTaskRunner
             root.Children.Add(build);
 
             // Profile
-            TaskRunnerNode profile = new TaskRunnerNode("Profile", true)
-            {
-                Description = "Runs 'webpack --profile --json'",
-                Command = GetCommand(cwd, "/c webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.")
-            };
+            TaskRunnerNode profile = new TaskRunnerNode("Profile", false);
+            TaskRunnerNode profileDev = CreateTask(cwd, "Development", "Runs 'webpack --profile'", "/c SET NODE_ENV=development && webpack -d --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            profile.Children.Add(profileDev);
+
+            TaskRunnerNode profileProd = CreateTask(cwd, "Production", "Runs 'webpack --profile'", "/c SET NODE_ENV=production && webpack -p --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            profile.Children.Add(profileProd);
+
             root.Children.Add(profile);
 
             // Start
@@ -133,10 +135,10 @@ namespace WebPackTaskRunner
                 if (!match.Success)
                     continue;
 
-                var task = new TaskRunnerNode($"config: {match.Groups["name"].Value}", true)
+                var task = new TaskRunnerNode($"config: {match.Groups["env"].Value}", true)
                 {
                     Description = $"Runs '{parent.Name} --config {fileName}'",
-                    Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args} --config {fileName}")
+                    Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args.Replace("webpack ", $"webpack --config {fileName} ")}")
                 };
 
                 parent.Children.Add(task);
