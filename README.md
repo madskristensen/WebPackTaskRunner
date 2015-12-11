@@ -31,10 +31,13 @@ install it locally in your project:
 
 ## Config files
 The WebPack Task Runner automatically triggers when it finds
-WebPack configuration files. These file names are supported:
+WebPack configuration files. The following file names
+are supported:
 
-1. webpack.config.js
-1. webpack.config.babel.js
+- webpack.config.js
+- webpack.config.ts
+- webpack.config.coffee
+- webpack.config.babel.js
 
 ## Dev server
 This extension support **webpack-dev-server** and can
