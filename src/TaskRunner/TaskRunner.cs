@@ -77,6 +77,14 @@ namespace WebPackTaskRunner
 
             root.Children.Add(build);
 
+            // Profile
+            TaskRunnerNode profile = new TaskRunnerNode("Profile", true)
+            {
+                Description = "Runs 'webpack --profile --json'",
+                Command = GetCommand(cwd, "/c webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.")
+            };
+            root.Children.Add(profile);
+
             // Start
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
             TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development && webpack-dev-server --hot --colors");
