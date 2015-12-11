@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace WebPackTaskRunner
 {
-    [TaskRunnerExport("webpack.config.js", "webpack.config.babel.js")]
+    [TaskRunnerExport("webpack.config.js", "webpack.config.babel.js", "webpack.config.ts", "webpack.config.coffee")]
     class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
