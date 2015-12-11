@@ -43,7 +43,7 @@ invoke it through the Task Runner Explorer.
 Make sure to set up the details in the webpack.config.js
 file like so:
 
-```json
+```js
 devServer: {
     contentBase: '.',
     host: 'localhost',
