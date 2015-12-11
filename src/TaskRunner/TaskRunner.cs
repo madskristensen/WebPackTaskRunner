@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -31,6 +32,7 @@ namespace WebPackTaskRunner
             _options.Add(new TaskRunnerOption("Display Modules", PackageIds.cmdDisplayModules, PackageGuids.guidWebPackPackageCmdSet, false, "--display-modules"));
             _options.Add(new TaskRunnerOption("Display Reasons", PackageIds.cmdDisplayReasons, PackageGuids.guidWebPackPackageCmdSet, false, "--display-reasons"));
             _options.Add(new TaskRunnerOption("Display Chunks", PackageIds.cmdDisplayChunks, PackageGuids.guidWebPackPackageCmdSet, false, "--display-chunks"));
+            _options.Add(new TaskRunnerOption("Display Error Details", PackageIds.cmdDisplayErrorDetails, PackageGuids.guidWebPackPackageCmdSet, false, "--display-error-details"));
         }
 
         public List<ITaskRunnerOption> Options
@@ -67,30 +69,30 @@ namespace WebPackTaskRunner
 
             // Build
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, "Development", "Runs 'webpack -d'", "/c webpack -d --colors");
+            TaskRunnerNode buildDev = CreateTask(cwd, "Development", "Runs 'webpack -d'", "/c SET NODE_ENV=development && webpack -d --colors");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, "Production", "Runs 'webpack -p'", "/c webpack -p --colors");
+            TaskRunnerNode buildProd = CreateTask(cwd, "Production", "Runs 'webpack -p'", "/c SET NODE_ENV=production && webpack -p --colors");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);
 
             // Start
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
-            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c webpack-dev-server --hot --colors");
+            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development && webpack-dev-server --hot --colors");
             start.Children.Add(startDev);
 
-            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c webpack-dev-server --colors");
+            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development && webpack-dev-server --colors");
             start.Children.Add(startProd);
 
             root.Children.Add(start);
 
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            TaskRunnerNode watchDev = CreateTask(cwd, "Development", "Runs 'webpack -d --watch'", "/c webpack -d --watch --colors");
+            TaskRunnerNode watchDev = CreateTask(cwd, "Development", "Runs 'webpack -d --watch'", "/c SET NODE_ENV=development && webpack -d --watch --colors");
             watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(cwd, "Production", "Runs 'webpack -p --watch'", "/c webpack -p --watch --colors");
+            TaskRunnerNode watchProd = CreateTask(cwd, "Production", "Runs 'webpack -p --watch'", "/c SET NODE_ENV=production && webpack -p --watch --colors");
             watch.Children.Add(watchProd);
 
             root.Children.Add(watch);
@@ -118,14 +120,12 @@ namespace WebPackTaskRunner
             foreach (string file in files)
             {
                 string fileName = Path.GetFileName(file);
-                string name = fileName
-                                  .Replace("webpack.", string.Empty)
-                                  .Replace(".config.js", string.Empty);
+                Match match = Regex.Match(fileName, "webpack\\.(?<env>[^\\.]+)\\.config(\\.babel)?\\.js");
 
-                if (string.IsNullOrEmpty(name) || name == "config.js")
+                if (!match.Success)
                     continue;
 
-                var task = new TaskRunnerNode($"config: {name}", true)
+                var task = new TaskRunnerNode($"config: {match.Groups["name"].Value}", true)
                 {
                     Description = $"Runs '{parent.Name} --config {fileName}'",
                     Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args} --config {fileName}")

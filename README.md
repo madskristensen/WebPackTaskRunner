@@ -24,12 +24,17 @@ webpack-dev-server like so:
 
 >npm install webpack-dev-server -g
 
+If you wish to use babel to run WebPack, you must first
+install it locally in your project:
+
+>npm install babel-core --save-dev
+
 ### Config files
 The WebPack Task Runner automatically triggers when it finds
 WebPack configuration files. These file names are supported:
 
 1. webpack.config.js
-1. webpack.[name].config.js
+1. webpack.config.babel.js
 
 ### Dev server
 This extension support **webpack-dev-server** and can
@@ -70,12 +75,13 @@ Each task can be executed by double-clicking the task.
 ![Console output](art/console.png)
 
 ### Switches
-WebPack CLI switches are available on the right-hand
+WebPack CLI switches are available on the left-hand
 side toolbar. The switches are
 
 1. --display-modules
 2. --display-reasons
 3. --display-chunks
+4. --display-error-details
 
 ![Switches](art/switches.png)
 

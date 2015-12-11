@@ -17,16 +17,16 @@
                     <ButtonText>Display Modules</ButtonText>
                 </Strings>
             </Button>
-			<Button guid="guidWebPackPackageCmdSet" id="cmdDisplayReasons" priority="0x0400" type="Button">
-				<Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-				<Icon guid="ImageCatalogGuid" id="SummaryView" />
-				<CommandFlag>IconIsMoniker</CommandFlag>
-				<CommandFlag>DefaultInvisible</CommandFlag>
-				<CommandFlag>DynamicVisibility</CommandFlag>
-				<Strings>
-					<ButtonText>Display Reasons</ButtonText>
-				</Strings>
-			</Button>
+            <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayReasons" priority="0x0400" type="Button">
+                <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+                <Icon guid="ImageCatalogGuid" id="SummaryView" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Display Reasons</ButtonText>
+                </Strings>
+            </Button>
             <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayChunks" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
                 <Icon guid="ImageCatalogGuid" id="DirectLinkList" />
@@ -35,6 +35,16 @@
                 <CommandFlag>DynamicVisibility</CommandFlag>
                 <Strings>
                     <ButtonText>Display Chunks</ButtonText>
+                </Strings>
+            </Button>
+            <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayErrorDetails" priority="0x0400" type="Button">
+                <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+                <Icon guid="ImageCatalogGuid" id="ScriptError" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Display Error Details</ButtonText>
                 </Strings>
             </Button>
         </Buttons>
@@ -46,8 +56,9 @@
 
         <GuidSymbol name="guidWebPackPackageCmdSet" value="{ef7252d5-aa4c-4765-b747-19099ca6fb18}">
             <IDSymbol name="cmdDisplayModules" value="0x0100" />
-			<IDSymbol name="cmdDisplayReasons" value="0x0200" />
+            <IDSymbol name="cmdDisplayReasons" value="0x0200" />
             <IDSymbol name="cmdDisplayChunks" value="0x0300" />
+            <IDSymbol name="cmdDisplayErrorDetails" value="0x0400" />
         </GuidSymbol>
 
         <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">
