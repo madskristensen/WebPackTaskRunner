@@ -75,6 +75,16 @@ namespace WebPackTaskRunner
 
             root.Children.Add(build);
 
+            // Start
+            TaskRunnerNode start = new TaskRunnerNode("Serve", false);
+            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c webpack-dev-server --hot --colors");
+            start.Children.Add(startDev);
+
+            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c webpack-dev-server --colors");
+            start.Children.Add(startProd);
+
+            root.Children.Add(start);
+
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
             TaskRunnerNode watchDev = CreateTask(cwd, "Development", "Runs 'webpack -d --watch'", "/c webpack -d --watch --colors");
@@ -96,7 +106,33 @@ namespace WebPackTaskRunner
                 Command = GetCommand(cwd, args)
             };
 
+            ApplyOverrides(task);
+
             return task;
+        }
+
+        private void ApplyOverrides(ITaskRunnerNode parent)
+        {
+            var files = Directory.EnumerateFiles(parent.Command.WorkingDirectory).Where(f => f.Contains("webpack.") && f.EndsWith(".config.js"));
+
+            foreach (string file in files)
+            {
+                string fileName = Path.GetFileName(file);
+                string name = fileName
+                                  .Replace("webpack.", string.Empty)
+                                  .Replace(".config.js", string.Empty);
+
+                if (string.IsNullOrEmpty(name) || name == "config.js")
+                    continue;
+
+                var task = new TaskRunnerNode($"config: {name}", true)
+                {
+                    Description = $"Runs '{parent.Name} --config {fileName}'",
+                    Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args} --config {fileName}")
+                };
+
+                parent.Children.Add(task);
+            }
         }
 
         private ITaskRunnerCommand GetCommand(string cwd, string arguments)
