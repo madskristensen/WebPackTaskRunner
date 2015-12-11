@@ -1,4 +1,4 @@
-## WebPack Task Runner extension
+# WebPack Task Runner extension
 Adds support for the [WebPack](https://webpack.github.io/)
 build tool in Visual Studio 2015's Task Runner Explorer.
 
@@ -9,7 +9,7 @@ Download the extension at the
 or get the
 [nightly build](http://vsixgallery.com/extension/471a020e-77f5-4c77-8ff0-59e08b6c5ba3/)
 
-### Install WebPack
+## Install WebPack
 In order to use this extension, you must have
 [WebPack](https://webpack.github.io/) installed globally or locally
 in your project.
@@ -29,14 +29,14 @@ install it locally in your project:
 
 >npm install babel-core --save-dev
 
-### Config files
+## Config files
 The WebPack Task Runner automatically triggers when it finds
 WebPack configuration files. These file names are supported:
 
 1. webpack.config.js
 1. webpack.config.babel.js
 
-### Dev server
+## Dev server
 This extension support **webpack-dev-server** and can
 invoke it through the Task Runner Explorer.
 
@@ -51,7 +51,7 @@ devServer: {
 },
 ```
 
-### Task Runner Explorer
+## Task Runner Explorer
 Open Task Runner Explorer by right-clicking the WebPack
 configuration file and select **Task Runner Explorer** from
 the context menu:
