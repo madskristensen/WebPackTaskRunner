@@ -17,17 +17,18 @@ in your project.
 Use [npm](http://npmjs.org/) to install it globally by
 typing the following in a command line:
 
->npm install webpack -g
+>`npm install webpack -g`
 
 To use the server functionality you also need to install
-webpack-dev-server like so:
+[webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html)
+like so:
 
->npm install webpack-dev-server -g
+>`npm install webpack-dev-server -g`
 
-If you wish to use babel to run WebPack, you must first
-install it locally in your project:
+If you wish to use [babel](https://babeljs.io/)
+to run WebPack, you must first install it locally in your project:
 
->npm install babel-core --save-dev
+>`npm install babel-core --save-dev`
 
 ## Config files
 The WebPack Task Runner automatically triggers when it finds
@@ -63,23 +64,24 @@ the context menu:
 
 The following tasks are supported:
 
-1. **Run** - `webpack -[d|p]`
-2. **Profile** - `webpack --profile --json > stats.json`
-3. **Serve** - `webpack-dev-server [--hot]`
-4. **Watch** - `webpack -[d|p] --watch`
+- **Run**
+  - Development: `webpack -d --colors`
+  - Production: `webpack -p --colors`
+- **Profile**
+  - Development: `webpack -d --profile --json > stats.json`
+  - Production: `webpack -p --profile --json > stats.json`
+- **Serve**
+  - Hot: `webpack-dev-server --hot --colors`
+  - Cold: `webpack-dev-server --colors`
+- **Watch**
+  - Development: `webpack -d --watch --colors`
+  - Production: `webpack -p --watch --colors`
 
 ![Task List](art/task-list.png)
 
 Each task can be executed by double-clicking the task.
 
 ![Console output](art/console.png)
-
-### Development / Production
-When executing a Production task, the extension will automatically
-set `NODE_ENV` to *production*. For Development tasks,
-*development* will be the value.
-
-`SET NODE_ENV=production && webpack...`
 
 ### Switches
 WebPack CLI switches are available on the left-hand
@@ -92,10 +94,21 @@ side toolbar. The switches are
 
 ![Switches](art/task-list.png)
 
->The `--progress` switch is **not** supported due to Task Runner Explorer inability to handle it.
+Each switch enabled will be added to the arguments when invoking
+the WebPack CLI.
+
+>The `--progress` switch is **not** supported in this extension
+>due to Task Runner Explorers inability to handle it.
 
 All switches are toggle button that can be left
 on or off for as long as needed.
+
+### Development / Production
+When executing a Production task, the extension will automatically
+set `NODE_ENV` to *production*. For Development tasks,
+*development* will be the value.
+
+`SET NODE_ENV=production && webpack...`
 
 ### Bindings
 Task bindings make it possible to associate individual tasks
