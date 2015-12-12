@@ -61,7 +61,7 @@ the context menu:
 
 ![Open Task Runner Explorer](art/open-trx.png)
 
-The following tasks are supported:+1:
+The following tasks are supported:
 
 1. **Run** - `webpack -[d|p]`
 2. **Profile** - `webpack --profile --json > stats.json`
