@@ -67,7 +67,7 @@ namespace WebPackTaskRunner
 
             ITaskRunnerNode root = new TaskRunnerNode(Constants.TASK_CATEGORY);
 
-            // Build
+            // Run
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
             TaskRunnerNode buildDev = CreateTask(cwd, "Development", "Runs 'webpack -d'", "/c SET NODE_ENV=development && webpack -d --colors");
             build.Children.Add(buildDev);

@@ -61,14 +61,25 @@ the context menu:
 
 ![Open Task Runner Explorer](art/open-trx.png)
 
-Task Runner Explorer will show both _run_ and _watch_
-tasks.
+The following tasks are supported:+1:
+
+1. **Run** - `webpack -[d|p]`
+2. **Profile** - `webpack --profile --json > stats.json`
+3. **Serve** - `webpack-dev-server [--hot]`
+4. **Watch** - `webpack -[d|p] --watch`
 
 ![Task List](art/task-list.png)
 
 Each task can be executed by double-clicking the task.
 
 ![Console output](art/console.png)
+
+### Development / Production
+When executing a Production task, the extension will automatically
+set `NODE_ENV` to *production*. For Development tasks,
+*development* will be the value.
+
+`SET NODE_ENV=production && webpack...`
 
 ### Switches
 WebPack CLI switches are available on the left-hand
@@ -80,6 +91,8 @@ side toolbar. The switches are
 4. --display-error-details
 
 ![Switches](art/task-list.png)
+
+>The `--progress` switch is **not** supported due to Task Runner Explorer inability to handle it.
 
 All switches are toggle button that can be left
 on or off for as long as needed.
