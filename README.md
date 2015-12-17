@@ -40,6 +40,14 @@ are supported:
 - webpack.config.coffee
 - webpack.config.babel.js
 
+Any config file will have a WebPack logo watermark at
+the bottom right corner of the editor window.
+
+![Watermark](art/watermark.png)
+
+You can toggle the visibility of the watermark by clicking
+on it.
+
 ## Dev server
 This extension support **webpack-dev-server** and can
 invoke it through the Task Runner Explorer.
