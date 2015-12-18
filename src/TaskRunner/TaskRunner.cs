@@ -26,7 +26,7 @@ namespace WebPackTaskRunner
             }
         }
 
-        private void InitializeBrunchRunnerOptions()
+        private void InitializeWebPackRunnerOptions()
         {
             _options = new List<ITaskRunnerOption>();
             _options.Add(new TaskRunnerOption("Display Modules", PackageIds.cmdDisplayModules, PackageGuids.guidWebPackPackageCmdSet, false, "--display-modules"));
@@ -41,7 +41,7 @@ namespace WebPackTaskRunner
             {
                 if (_options == null)
                 {
-                    InitializeBrunchRunnerOptions();
+                    InitializeWebPackRunnerOptions();
                 }
 
                 return _options;
