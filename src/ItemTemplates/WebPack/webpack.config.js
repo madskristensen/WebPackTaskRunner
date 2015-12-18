@@ -4,15 +4,15 @@
         filename: "./dist/bundle.js"
     },
     devServer: {
-        contentBase: '.',
-        host: 'localhost',
+        contentBase: ".",
+        host: "localhost",
         port: 9000
     },
     module: {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'jsx-loader'
+                loader: "jsx-loader"
             },
         ]
     }
