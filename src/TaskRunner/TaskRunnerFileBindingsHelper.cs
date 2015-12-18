@@ -10,7 +10,6 @@ namespace WebPackTaskRunner
 {
     internal static class TaskRunnerFileBindingsHelper
     {
-        private const int _maxGruntfileSize = 5000000;
         internal const string _bindingElementName = "binding";
         internal readonly static string _configRegex = "///\\s*<" + _bindingElementName + ".*/>";
 
@@ -163,7 +162,7 @@ namespace WebPackTaskRunner
                     configText = oldContent;
                 }
 
-                File.WriteAllText(configPath, WriteMetaDataToGruntfileText(configText, bindingsXml));
+                File.WriteAllText(configPath, WriteMetaDataToWebPackConfigText(configText, bindingsXml));
 
                 return true;
             }
@@ -173,7 +172,7 @@ namespace WebPackTaskRunner
             }
         }
 
-        private static string WriteMetaDataToGruntfileText(string configText, string bindingsXml)
+        private static string WriteMetaDataToWebPackConfigText(string configText, string bindingsXml)
         {
             StringBuilder text = new StringBuilder();
 
