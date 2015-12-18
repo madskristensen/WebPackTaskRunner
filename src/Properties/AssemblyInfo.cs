@@ -2,11 +2,11 @@
 using System.Runtime.InteropServices;
 using WebPackTaskRunner;
 
-[assembly: AssemblyTitle("Brunch Task Runner")]
-[assembly: AssemblyDescription("Adds support for the Brunch build tool in Visual Studio 2015's Task Runner Explorer.")]
+[assembly: AssemblyTitle("WebPack Task Runner")]
+[assembly: AssemblyDescription("Adds support for the WebPack build tool in Visual Studio 2015's Task Runner Explorer.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mads Kristensen")]
-[assembly: AssemblyProduct("Brunch Task Runner")]
+[assembly: AssemblyProduct("WebPack Task Runner")]
 [assembly: AssemblyCopyright("Copyright 2015 Mads Kristensen")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

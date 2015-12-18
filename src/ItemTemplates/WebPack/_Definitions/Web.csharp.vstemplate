@@ -1,8 +1,8 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
     <TemplateData>
         <DefaultName>webpack.config.js</DefaultName>
-        <Name>WebPack Configuration file</Name>
-        <Description>WebPack Configuration file.</Description>
+        <Name>WebPack Configuration File</Name>
+        <Description>WebPack Configuration File</Description>
         <ProjectType>Web</ProjectType>
         <ProjectSubType>CSharp</ProjectSubType>
         <Icon>icon.png</Icon>
