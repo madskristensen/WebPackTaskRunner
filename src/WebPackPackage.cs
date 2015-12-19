@@ -20,6 +20,7 @@ namespace WebPackTaskRunner
         {
             Dte = (DTE2)GetService(typeof(DTE));
 
+            Logger.Initialize(this, Constants.VSIX_NAME);
             Telemetry.Initialize(Dte, Constants.VERSION, "9b87f062-9986-4e5e-8adc-670b3c471c66");
 
             base.Initialize();
