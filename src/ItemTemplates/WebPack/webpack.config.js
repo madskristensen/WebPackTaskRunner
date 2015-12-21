@@ -1,4 +1,6 @@
-﻿module.exports = {
+﻿"use strict";
+
+module.exports = {
     entry: "./src/file.js",
     output: {
         filename: "./dist/bundle.js"
