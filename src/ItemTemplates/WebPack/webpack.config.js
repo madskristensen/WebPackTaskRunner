@@ -11,9 +11,9 @@
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loader: "jsx-loader"
-            },
+                test: /\.jsx?$/,
+                loader: "babel-loader"
+            }
         ]
     }
 }
