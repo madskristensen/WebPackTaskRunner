@@ -69,40 +69,40 @@ namespace WebPackTaskRunner
 
             // Run
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, "Development", "Runs 'webpack -d'", "/c SET NODE_ENV=development && webpack -d --colors");
+            TaskRunnerNode buildDev = CreateTask(cwd, "Development", "Runs 'webpack -d'", "/c SET NODE_ENV=development&& webpack -d --colors");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, "Production", "Runs 'webpack -p'", "/c SET NODE_ENV=production && webpack -p --colors");
+            TaskRunnerNode buildProd = CreateTask(cwd, "Production", "Runs 'webpack -p'", "/c SET NODE_ENV=production&& webpack -p --colors");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);
 
             // Profile
             TaskRunnerNode profile = new TaskRunnerNode("Profile", false);
-            TaskRunnerNode profileDev = CreateTask(cwd, "Development", "Runs 'webpack --profile'", "/c SET NODE_ENV=development && webpack -d --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            TaskRunnerNode profileDev = CreateTask(cwd, "Development", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack -d --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileDev);
 
-            TaskRunnerNode profileProd = CreateTask(cwd, "Production", "Runs 'webpack --profile'", "/c SET NODE_ENV=production && webpack -p --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            TaskRunnerNode profileProd = CreateTask(cwd, "Production", "Runs 'webpack --profile'", "/c SET NODE_ENV=production&& webpack -p --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileProd);
 
             root.Children.Add(profile);
 
             // Start
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
-            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development && webpack-dev-server --hot --colors");
+            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development&& webpack-dev-server --hot --colors");
             start.Children.Add(startDev);
 
-            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development && webpack-dev-server --colors");
+            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development&& webpack-dev-server --colors");
             start.Children.Add(startProd);
 
             root.Children.Add(start);
 
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            TaskRunnerNode watchDev = CreateTask(cwd, "Development", "Runs 'webpack -d --watch'", "/c SET NODE_ENV=development && webpack -d --watch --colors");
+            TaskRunnerNode watchDev = CreateTask(cwd, "Development", "Runs 'webpack -d --watch'", "/c SET NODE_ENV=development&& webpack -d --watch --colors");
             watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(cwd, "Production", "Runs 'webpack -p --watch'", "/c SET NODE_ENV=production && webpack -p --watch --colors");
+            TaskRunnerNode watchProd = CreateTask(cwd, "Production", "Runs 'webpack -p --watch'", "/c SET NODE_ENV=production&& webpack -p --watch --colors");
             watch.Children.Add(watchProd);
 
             root.Children.Add(watch);

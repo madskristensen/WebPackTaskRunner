@@ -116,7 +116,7 @@ When executing a Production task, the extension will automatically
 set `NODE_ENV` to *production*. For Development tasks,
 *development* will be the value.
 
-`SET NODE_ENV=production && webpack...`
+`SET NODE_ENV=production&& webpack...`
 
 ### Bindings
 Task bindings make it possible to associate individual tasks
