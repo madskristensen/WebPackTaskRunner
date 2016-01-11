@@ -5,6 +5,6 @@
   Add New Project / Add New Item dialog by setting the value below
   -->
     <TemplateInfo Path="CSharp\Web\General"/>
-    <Replacements Include="*.*" Exclude="*.vstemplate;*.fsproj;*.vbproj;*.jpg;*.png;*.ico;_preprocess.xml;_project.vstemplate.xml">
+    <Replacements Include="*.*" Exclude="*.vstemplate;*.csproj;*.fsproj;*.vbproj;*.jpg;*.png;*.ico;_preprocess.xml;_project.vstemplate.xml">
     </Replacements>
 </Preprocess>

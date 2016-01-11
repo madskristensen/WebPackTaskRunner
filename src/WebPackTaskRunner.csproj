@@ -227,6 +227,7 @@
     <Content Include="ItemTemplates\WebPack\icon.png" />
     <Content Include="ItemTemplates\WebPack\preview.png" />
     <Content Include="ItemTemplates\WebPack\_Definitions\CSharp.vstemplate" />
+    <Content Include="ItemTemplates\WebPack\_Definitions\VB.vstemplate" />
     <Content Include="ItemTemplates\WebPack\_Definitions\Web.csharp.vstemplate" />
     <Content Include="ItemTemplates\WebPack\_preprocess.xml" />
     <Content Include="Resources\Package.ico" />
