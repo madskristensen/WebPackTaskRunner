@@ -82,10 +82,10 @@ namespace WebPackTaskRunner
 
             // Profile
             TaskRunnerNode profile = new TaskRunnerNode("Profile", false);
-            TaskRunnerNode profileDev = CreateTask(cwd, $"{profile.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack -d --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            TaskRunnerNode profileDev = CreateTask(cwd, $"{profile.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack -d --profile'", "/c SET NODE_ENV=development&& webpack -d --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileDev);
 
-            TaskRunnerNode profileProd = CreateTask(cwd, $"{profile.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=production&& webpack -p --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            TaskRunnerNode profileProd = CreateTask(cwd, $"{profile.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack -p --profile'", "/c SET NODE_ENV=production&& webpack -p --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileProd);
 
             root.Children.Add(profile);
