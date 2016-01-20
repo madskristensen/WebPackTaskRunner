@@ -49,23 +49,23 @@ You can toggle the visibility of the watermark by clicking
 on it.
 
 ## Dev server
-This extension support **webpack-dev-server** and can
+This extension supports **webpack-dev-server** and can
 invoke it through the Task Runner Explorer.
 
-Make sure to set up the details in the webpack.config.js
+Make sure to setup the details in the **webpack.config.js**
 file like so:
 
 ```js
 devServer: {
-    contentBase: '.',
-    host: 'localhost',
+    contentBase: ".",
+    host: "localhost",
     port: 9000
 },
 ```
 
 ## Task Runner Explorer
 Open Task Runner Explorer by right-clicking the WebPack
-configuration file and select **Task Runner Explorer** from
+configuration file and selecting **Task Runner Explorer** from
 the context menu:
 
 ![Open Task Runner Explorer](art/open-trx.png)
@@ -73,17 +73,17 @@ the context menu:
 The following tasks are supported:
 
 - **Run**
-  - Development: `webpack -d --colors`
-  - Production: `webpack -p --colors`
+  - Run - Development: `webpack -d --colors`
+  - Run - Production: `webpack -p --colors`
 - **Profile**
-  - Development: `webpack -d --profile --json > stats.json`
-  - Production: `webpack -p --profile --json > stats.json`
+  - Profile - Development: `webpack -d --profile --json > stats.json`
+  - Profile - Production: `webpack -p --profile --json > stats.json`
 - **Serve**
   - Hot: `webpack-dev-server --hot --colors`
   - Cold: `webpack-dev-server --colors`
 - **Watch**
-  - Development: `webpack -d --watch --colors`
-  - Production: `webpack -p --watch --colors`
+  - Watch - Development: `webpack -d --watch --colors`
+  - Watch - Production: `webpack -p --watch --colors`
 
 ![Task List](art/task-list.png)
 
@@ -107,9 +107,9 @@ Each switch enabled will be added to the arguments when invoking
 the WebPack CLI.
 
 >The `--progress` switch is **not** supported in this extension
->due to Task Runner Explorers inability to handle it.
+>due to Task Runner Explorer's inability to handle it.
 
-All switches are toggle button that can be left
+All switches are toggle buttons that can be left
 on or off for as long as needed.
 
 ### Development / Production
