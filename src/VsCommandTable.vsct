@@ -9,7 +9,7 @@
         <Buttons>
             <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayModules" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-                <Icon guid="ImageCatalogGuid" id="DetailDataView" />
+                <Icon guid="ImageCatalogGuid" id="Module" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DefaultInvisible</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
@@ -19,7 +19,7 @@
             </Button>
             <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayReasons" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-                <Icon guid="ImageCatalogGuid" id="SummaryView" />
+                <Icon guid="ImageCatalogGuid" id="ItemListView" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DefaultInvisible</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
@@ -29,7 +29,7 @@
             </Button>
             <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayChunks" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-                <Icon guid="ImageCatalogGuid" id="DirectLinkList" />
+                <Icon guid="ImageCatalogGuid" id="EntryPoint" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DefaultInvisible</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
@@ -39,7 +39,7 @@
             </Button>
             <Button guid="guidWebPackPackageCmdSet" id="cmdDisplayErrorDetails" priority="0x0400" type="Button">
                 <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
-                <Icon guid="ImageCatalogGuid" id="ScriptError" />
+                <Icon guid="ImageCatalogGuid" id="ModuleError" />
                 <CommandFlag>IconIsMoniker</CommandFlag>
                 <CommandFlag>DefaultInvisible</CommandFlag>
                 <CommandFlag>DynamicVisibility</CommandFlag>
