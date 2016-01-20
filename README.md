@@ -93,12 +93,13 @@ Each task can be executed by double-clicking the task.
 
 ### Switches
 WebPack CLI switches are available on the left-hand
-side toolbar. The switches are
+side toolbar. The switches are:
 
 1. --display-modules
 2. --display-reasons
 3. --display-chunks
 4. --display-error-details
+5. --bail
 
 ![Switches](art/task-list.png)
 
