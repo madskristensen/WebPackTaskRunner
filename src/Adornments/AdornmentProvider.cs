@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using System;
+using System.ComponentModel.Composition;
 using System.IO;
 using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell;
@@ -67,7 +68,7 @@ namespace WebPackTaskRunner
             if (string.IsNullOrEmpty(fileName) || !Path.IsPathRooted(document.FilePath))
                 return;
 
-            if (fileName.StartsWith("webpack.") && fileName.Contains(".config."))
+            if (fileName.StartsWith("webpack.", StringComparison.OrdinalIgnoreCase) && fileName.Contains(".config."))
             {
                 textView.Properties.GetOrCreateSingletonProperty(() => new LogoAdornment(textView, _isVisible, _initOpacity));
             }

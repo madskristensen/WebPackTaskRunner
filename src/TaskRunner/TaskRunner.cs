@@ -129,7 +129,7 @@ namespace WebPackTaskRunner
 
         private void ApplyOverrides(ITaskRunnerNode parent)
         {
-            var files = Directory.EnumerateFiles(parent.Command.WorkingDirectory).Where(f => f.Contains("webpack.") && f.EndsWith(".config.js"));
+            var files = Directory.EnumerateFiles(parent.Command.WorkingDirectory).Where(f => f.Contains("webpack.") && f.EndsWith(".config.js", StringComparison.OrdinalIgnoreCase));
 
             foreach (string file in files)
             {
