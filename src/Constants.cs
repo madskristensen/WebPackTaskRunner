@@ -1,6 +1,6 @@
 ﻿namespace WebPackTaskRunner
 {
-    internal class Constants
+    internal static class Constants
     {
         public const string VERSION = "1.0";
         public const string VSIX_NAME = "WebPack Task Runner";
