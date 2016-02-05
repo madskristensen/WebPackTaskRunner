@@ -73,17 +73,17 @@ the context menu:
 The following tasks are supported:
 
 - **Run**
-  - Run - Development: `webpack -d --colors`
-  - Run - Production: `webpack -p --colors`
+  - Run - Development: `webpack -d --color`
+  - Run - Production: `webpack -p --color`
 - **Profile**
   - Profile - Development: `webpack -d --profile --json > stats.json`
   - Profile - Production: `webpack -p --profile --json > stats.json`
 - **Serve**
-  - Hot: `webpack-dev-server --hot --colors`
-  - Cold: `webpack-dev-server --colors`
+  - Hot: `webpack-dev-server --hot --color`
+  - Cold: `webpack-dev-server --color`
 - **Watch**
-  - Watch - Development: `webpack -d --watch --colors`
-  - Watch - Production: `webpack -p --watch --colors`
+  - Watch - Development: `webpack -d --watch --color`
+  - Watch - Production: `webpack -p --watch --color`
 
 ![Task List](art/task-list.png)
 
