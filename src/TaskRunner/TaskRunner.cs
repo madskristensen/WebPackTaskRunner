@@ -66,7 +66,7 @@ namespace WebPackTaskRunner
 
             Telemetry.TrackEvent(configFileName.ToLowerInvariant());
 
-            ITaskRunnerNode root = new TaskRunnerNode(Constants.TASK_CATEGORY);
+            ITaskRunnerNode root = new TaskRunnerNode("WebPack");
 
             const string DEVELOPMENT_TASK_NAME = "Development";
             const string PRODUCTION_TASK_NAME = "Production";

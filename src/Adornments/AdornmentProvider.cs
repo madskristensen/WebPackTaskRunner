@@ -39,7 +39,7 @@ namespace WebPackTaskRunner
 
             LogoAdornment.VisibilityChanged += AdornmentVisibilityChanged;
 
-            _isVisible = store.GetBoolean(Constants.VSIX_NAME, _propertyName, true);
+            _isVisible = store.GetBoolean(Vsix.Name, _propertyName, true);
         }
 
         private void AdornmentVisibilityChanged(object sender, bool isVisible)
@@ -47,10 +47,10 @@ namespace WebPackTaskRunner
             WritableSettingsStore wstore = _settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
             _isVisible = isVisible;
 
-            if (!wstore.CollectionExists(Constants.VSIX_NAME))
-                wstore.CreateCollection(Constants.VSIX_NAME);
+            if (!wstore.CollectionExists(Vsix.Name))
+                wstore.CreateCollection(Vsix.Name);
 
-            wstore.SetBoolean(Constants.VSIX_NAME, _propertyName, isVisible);
+            wstore.SetBoolean(Vsix.Name, _propertyName, isVisible);
         }
 
         public void TextViewCreated(IWpfTextView textView)

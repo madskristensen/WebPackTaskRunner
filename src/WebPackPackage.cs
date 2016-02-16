@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 namespace WebPackTaskRunner
 {
     [PackageRegistration(UseManagedResourcesOnly = true)]
-    [InstalledProductRegistration("#110", "#112", Constants.VERSION, IconResourceID = 400)]
+    [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
     [Guid(PackageGuids.guidWebPackPackageString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
@@ -20,8 +20,8 @@ namespace WebPackTaskRunner
         {
             Dte = (DTE2)GetService(typeof(DTE));
 
-            Logger.Initialize(this, Constants.VSIX_NAME);
-            Telemetry.Initialize(Dte, Constants.VERSION, "9b87f062-9986-4e5e-8adc-670b3c471c66");
+            Logger.Initialize(this, Vsix.Name);
+            Telemetry.Initialize(Dte, Vsix.Version, "9b87f062-9986-4e5e-8adc-670b3c471c66");
 
             base.Initialize();
         }

@@ -2,15 +2,15 @@
 using System.Runtime.InteropServices;
 using WebPackTaskRunner;
 
-[assembly: AssemblyTitle("WebPack Task Runner")]
-[assembly: AssemblyDescription("Adds support for the WebPack build tool in Visual Studio 2015's Task Runner Explorer.")]
+[assembly: AssemblyTitle(Vsix.Name)]
+[assembly: AssemblyDescription(Vsix.Description)]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mads Kristensen")]
-[assembly: AssemblyProduct("WebPack Task Runner")]
-[assembly: AssemblyCopyright("Copyright 2015 Mads Kristensen")]
+[assembly: AssemblyCompany(Vsix.Author)]
+[assembly: AssemblyProduct(Vsix.Name)]
+[assembly: AssemblyCopyright(Vsix.Name)]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion(Constants.VERSION)]
-[assembly: AssemblyFileVersion(Constants.VERSION)]
+[assembly: AssemblyVersion(Vsix.Version)]
+[assembly: AssemblyFileVersion(Vsix.Version)]

@@ -6,7 +6,7 @@ namespace WebPackTaskRunner
 {
     class AdornmentLayer
     {
-        public const string LayerName = Constants.VSIX_NAME + " Logo";
+        public const string LayerName = Vsix.Name + " Logo";
 
         [Export(typeof(AdornmentLayerDefinition))]
         [Name(LayerName)]
