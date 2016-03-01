@@ -9,6 +9,11 @@ Download the extension at the
 or get the
 [nightly build](http://vsixgallery.com/extension/471a020e-77f5-4c77-8ff0-59e08b6c5ba3/)
 
+## New to WebPack?
+You may want to check out the article
+[How to integrate WebPack into Visual Studio 2015](http://www.sochix.ru/how-to-integrate-webpack-into-visual-studio-2015/)
+by [Ilya Pirozhenko](https://twitter.com/SochiX)
+
 ## Install WebPack
 In order to use this extension, you must have
 [WebPack](https://webpack.github.io/) installed globally or locally
