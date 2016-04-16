@@ -23,7 +23,7 @@ namespace WebPackTaskRunner
             FileInfo info = new FileInfo(file);
             info.IsReadOnly = false;
         }
-        
+
         public static void AddFileToProject(this Project project, string file, string itemType = null)
         {
             if (project.IsKind(ProjectTypes.ASPNET_5))
