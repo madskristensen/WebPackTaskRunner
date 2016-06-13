@@ -64,8 +64,6 @@ namespace WebPackTaskRunner
             string configFileName = Path.GetFileName(configPath);
             string cwd = Path.GetDirectoryName(configPath);
 
-            Telemetry.TrackEvent(configFileName.ToLowerInvariant());
-
             ITaskRunnerNode root = new TaskRunnerNode("WebPack");
 
             const string DEVELOPMENT_TASK_NAME = "Development";

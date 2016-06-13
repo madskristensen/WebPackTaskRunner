@@ -20,7 +20,7 @@ namespace WebPackTaskRunner
         {
             Dte = (DTE2)GetService(typeof(DTE));
 
-            Logger.Initialize(this, Vsix.Name, Vsix.Version, "9b87f062-9986-4e5e-8adc-670b3c471c66");
+            Logger.Initialize(this, Vsix.Name);
 
             base.Initialize();
         }

@@ -42,7 +42,6 @@ namespace WebPackTaskRunner
 
         public bool SaveBindings(string configPath, string bindingsXml)
         {
-            Telemetry.TrackEvent("Updated bindings");
             return TaskRunnerFileBindingsHelper.SaveBindings(configPath, bindingsXml);
         }
     }

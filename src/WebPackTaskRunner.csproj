@@ -52,6 +52,7 @@
     <Compile Include="Adornments\AdornmentLayer.cs" />
     <Compile Include="Adornments\AdornmentProvider.cs" />
     <Compile Include="Adornments\LogoAdornment.cs" />
+    <Compile Include="Helpers\Logger.cs" />
     <Compile Include="source.extension.cs">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Compile>
@@ -98,10 +99,6 @@
     </Reference>
     <Reference Include="EnvDTE90, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.CSharp" />
@@ -220,10 +217,6 @@
     <Reference Include="TemplateBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\TemplateBuilder.1.1.4.5-beta\lib\TemplateBuilder.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="VsixLogger, Version=1.0.33.0, Culture=neutral, PublicKeyToken=29d32695dc822296, processorArchitecture=MSIL">
-      <HintPath>..\packages\VsixLogger.1.0.33\lib\net45\VsixLogger.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
