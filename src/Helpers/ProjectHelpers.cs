@@ -1,28 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using EnvDTE;
 using EnvDTE80;
+using Microsoft.VisualStudio.Shell;
 
 namespace WebPackTaskRunner
 {
     public static class ProjectHelpers
     {
-        private static DTE2 _dte = WebPackPackage.Dte;
-
-        public static void CheckFileOutOfSourceControl(string file)
-        {
-            if (!File.Exists(file) || _dte.Solution.FindProjectItem(file) == null)
-                return;
-
-            if (_dte.SourceControl.IsItemUnderSCC(file) && !_dte.SourceControl.IsItemCheckedOut(file))
-                _dte.SourceControl.CheckOutItem(file);
-
-            FileInfo info = new FileInfo(file);
-            info.IsReadOnly = false;
-        }
+        private static DTE2 _dte = (DTE2)Package.GetGlobalService(typeof(DTE));
 
         public static void AddFileToProject(this Project project, string file, string itemType = null)
         {
@@ -49,51 +37,9 @@ namespace WebPackTaskRunner
             }
         }
 
-        public static void AddNestedFile(string parentFile, string newFile)
-        {
-            ProjectItem item = _dte.Solution.FindProjectItem(parentFile);
-
-            try
-            {
-                if (item == null
-                    || item.ContainingProject == null
-                    || item.ContainingProject.IsKind(ProjectTypes.ASPNET_5))
-                    return;
-
-                if (item.ProjectItems == null || item.ContainingProject.IsKind(ProjectTypes.UNIVERSAL_APP))
-                {
-                    item.ContainingProject.AddFileToProject(newFile);
-                }
-                else if (_dte.Solution.FindProjectItem(newFile) == null)
-                {
-                    item.ProjectItems.AddFromFile(newFile);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Log(ex);
-            }
-        }
-
         public static bool IsKind(this Project project, string kindGuid)
         {
             return project.Kind.Equals(kindGuid, StringComparison.OrdinalIgnoreCase);
-        }
-
-        public static void DeleteFileFromProject(string file)
-        {
-            ProjectItem item = _dte.Solution.FindProjectItem(file);
-
-            if (item == null)
-                return;
-            try
-            {
-                item.Delete();
-            }
-            catch (Exception ex)
-            {
-                Logger.Log(ex);
-            }
         }
 
         private static IEnumerable<Project> GetChildProjects(Project parent)

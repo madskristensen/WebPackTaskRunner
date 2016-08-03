@@ -1,5 +1,7 @@
 using System;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using task =  System.Threading.Tasks.Task;
 
 internal static class Logger
 {
@@ -10,6 +12,12 @@ internal static class Logger
     public static void Initialize(IServiceProvider provider, string name)
     {
         _output = (IVsOutputWindow)provider.GetService(typeof(SVsOutputWindow));
+        _name = name;
+    }
+
+    public static async task InitializeAsync(AsyncPackage package, string name)
+    {
+        _output = await package.GetServiceAsync(typeof(SVsOutputWindow)) as IVsOutputWindow;
         _name = name;
     }
 
