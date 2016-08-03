@@ -38,7 +38,7 @@ internal static class Logger
 
     private static bool EnsurePane()
     {
-        if (_pane == null)
+        if (_pane == null && _output != null)
         {
             Guid guid = Guid.NewGuid();
             _output.CreatePane(ref guid, _name, 1, 1);
