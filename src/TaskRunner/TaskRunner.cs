@@ -91,10 +91,10 @@ namespace WebPackTaskRunner
 
             // Start
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
-            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development&& webpack-dev-server --hot");
+            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development&& webpack-dev-server --hot --color");
             start.Children.Add(startDev);
 
-            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development&& webpack-dev-server");
+            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development&& webpack-dev-server --color");
             start.Children.Add(startProd);
 
             root.Children.Add(start);

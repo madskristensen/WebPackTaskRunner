@@ -1,7 +1,7 @@
 using System;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using task =  System.Threading.Tasks.Task;
+using task = System.Threading.Tasks.Task;
 
 internal static class Logger
 {
@@ -40,9 +40,12 @@ internal static class Logger
     {
         if (_pane == null && _output != null)
         {
-            Guid guid = Guid.NewGuid();
-            _output.CreatePane(ref guid, _name, 1, 1);
-            _output.GetPane(ref guid, out _pane);
+            ThreadHelper.Generic.BeginInvoke(() =>
+            {
+                Guid guid = Guid.NewGuid();
+                _output.CreatePane(ref guid, _name, 1, 1);
+                _output.GetPane(ref guid, out _pane);
+            });
         }
 
         return _pane != null;
