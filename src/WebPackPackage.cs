@@ -18,8 +18,6 @@ namespace WebPackTaskRunner
         protected override async task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await Logger.InitializeAsync(this, Vsix.Name);
-
-            await base.InitializeAsync(cancellationToken, progress);
         }
     }
 }
