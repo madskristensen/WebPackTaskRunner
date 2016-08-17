@@ -57,6 +57,16 @@
                     <ButtonText>Bail</ButtonText>
                 </Strings>
             </Button>
+            <Button guid="guidWebPackPackageCmdSet" id="cmdInline" priority="0x0500" type="Button">
+                <Parent guid="guidTaskRunnerExplorerCmdSet" id="IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS" />
+                <Icon guid="ImageCatalogGuid" id="Inline" />
+                <CommandFlag>IconIsMoniker</CommandFlag>
+                <CommandFlag>DefaultInvisible</CommandFlag>
+                <CommandFlag>DynamicVisibility</CommandFlag>
+                <Strings>
+                    <ButtonText>Inline</ButtonText>
+                </Strings>
+            </Button>
         </Buttons>
     </Commands>
 
@@ -70,6 +80,7 @@
             <IDSymbol name="cmdDisplayChunks" value="0x0300" />
             <IDSymbol name="cmdDisplayErrorDetails" value="0x0400" />
             <IDSymbol name="cmdBail" value="0x0500" />
+            <IDSymbol name="cmdInline" value="0x0600" />
         </GuidSymbol>
 
         <GuidSymbol name="guidTaskRunnerExplorerCmdSet" value="{9E78B319-2142-4381-873C-6EC83F092915}">

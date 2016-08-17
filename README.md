@@ -84,8 +84,8 @@ The following tasks are supported:
   - Profile - Development: `webpack -d --profile --json > stats.json`
   - Profile - Production: `webpack -p --profile --json > stats.json`
 - **Serve**
-  - Hot: `webpack-dev-server --hot --color`
-  - Cold: `webpack-dev-server --color`
+  - Hot: `webpack-dev-server --hot`
+  - Cold: `webpack-dev-server`
 - **Watch**
   - Watch - Development: `webpack -d --watch --color`
   - Watch - Production: `webpack -p --watch --color`
@@ -105,6 +105,7 @@ side toolbar. The switches are:
 3. --display-chunks
 4. --display-error-details
 5. --bail
+6. --inline
 
 ![Switches](art/task-list.png)
 
