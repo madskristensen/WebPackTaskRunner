@@ -45,6 +45,10 @@ are supported:
 - webpack.config.coffee
 - webpack.config.babel.js
 
+**Important!** The Task Runner Explorer requires the config files to
+be located at the root of the project or solution - not in a project
+sub folder.
+
 Any config file will have a WebPack logo watermark at
 the bottom right corner of the editor window.
 
