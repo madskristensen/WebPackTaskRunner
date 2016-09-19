@@ -34,7 +34,7 @@ namespace WebPackTaskRunner
             _options.Add(new TaskRunnerOption("Display Chunks", PackageIds.cmdDisplayChunks, PackageGuids.guidWebPackPackageCmdSet, false, "--display-chunks"));
             _options.Add(new TaskRunnerOption("Display Error Details", PackageIds.cmdDisplayErrorDetails, PackageGuids.guidWebPackPackageCmdSet, false, "--display-error-details"));
             _options.Add(new TaskRunnerOption("Bail", PackageIds.cmdBail, PackageGuids.guidWebPackPackageCmdSet, false, "--bail"));
-            _options.Add(new TaskRunnerOption("Inline", PackageIds.cmdInline, PackageGuids.guidWebPackPackageCmdSet, true, "--inline"));
+            _options.Add(new TaskRunnerOption("Inline", PackageIds.cmdInline, PackageGuids.guidWebPackPackageCmdSet, false, "--inline"));
         }
 
         public List<ITaskRunnerOption> Options
