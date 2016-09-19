@@ -72,10 +72,10 @@ namespace WebPackTaskRunner
 
             // Run
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack -d'", "/c SET NODE_ENV=development&& webpack -d");
+            TaskRunnerNode buildDev = CreateTask(cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack -d'", "/c SET NODE_ENV=development&& webpack -d --color");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, $"{build.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack -p'", "/c SET NODE_ENV=production&& webpack -p");
+            TaskRunnerNode buildProd = CreateTask(cwd, $"{build.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack -p'", "/c SET NODE_ENV=production&& webpack -p --color");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);
