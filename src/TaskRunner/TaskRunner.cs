@@ -35,6 +35,7 @@ namespace WebPackTaskRunner
             _options.Add(new TaskRunnerOption("Display Error Details", PackageIds.cmdDisplayErrorDetails, PackageGuids.guidWebPackPackageCmdSet, false, "--display-error-details"));
             _options.Add(new TaskRunnerOption("Bail", PackageIds.cmdBail, PackageGuids.guidWebPackPackageCmdSet, false, "--bail"));
             _options.Add(new TaskRunnerOption("Inline", PackageIds.cmdInline, PackageGuids.guidWebPackPackageCmdSet, false, "--inline"));
+            _options.Add(new TaskRunnerOption("History API Fallback", PackageIds.cmdHistoryApi, PackageGuids.guidWebPackPackageCmdSet, false, "--history-api-fallback"));
         }
 
         public List<ITaskRunnerOption> Options
