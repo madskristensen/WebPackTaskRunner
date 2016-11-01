@@ -30,6 +30,7 @@ namespace WebPackTaskRunner
         public const int cmdDisplayErrorDetails = 0x0400;
         public const int cmdBail = 0x0500;
         public const int cmdInline = 0x0600;
+        public const int cmdHistoryApi = 0x0700;
         public const int IDG_TASKRUNNER_TOOLBAR_CUSTOM_COMMANDS = 0x2002;
     }
 }
