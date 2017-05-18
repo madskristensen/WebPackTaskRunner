@@ -73,40 +73,40 @@ namespace WebPackTaskRunner
 
             // Run
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
-            TaskRunnerNode buildDev = CreateTask(cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --color");
+            TaskRunnerNode buildDev = CreateTask(configFileName, cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --color");
             build.Children.Add(buildDev);
 
-            TaskRunnerNode buildProd = CreateTask(cwd, $"{build.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=production&& webpack --color");
+            TaskRunnerNode buildProd = CreateTask(configFileName, cwd, $"{build.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=production&& webpack --color");
             build.Children.Add(buildProd);
 
             root.Children.Add(build);
 
             // Profile
             TaskRunnerNode profile = new TaskRunnerNode("Profile", false);
-            TaskRunnerNode profileDev = CreateTask(cwd, $"{profile.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            TaskRunnerNode profileDev = CreateTask(configFileName, cwd, $"{profile.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileDev);
 
-            TaskRunnerNode profileProd = CreateTask(cwd, $"{profile.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=production&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            TaskRunnerNode profileProd = CreateTask(configFileName, cwd, $"{profile.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=production&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileProd);
 
             root.Children.Add(profile);
 
             // Serve
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
-            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --hot --color");
+            TaskRunnerNode startDev = CreateTask(configFileName, cwd, "Hot", "Runs 'webpack-dev-server --hot --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --hot --colors");
             start.Children.Add(startDev);
 
-            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --color");
+            TaskRunnerNode startProd = CreateTask(configFileName, cwd, "Cold", "Runs 'webpack-dev-server --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --colors");
             start.Children.Add(startProd);
 
             root.Children.Add(start);
 
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            TaskRunnerNode watchDev = CreateTask(cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --watch --colors");
+            TaskRunnerNode watchDev = CreateTask(configFileName, cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --watch --color");
             watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --watch --colors");
+            TaskRunnerNode watchProd = CreateTask(configFileName, cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --watch --color");
             watch.Children.Add(watchProd);
 
             root.Children.Add(watch);
@@ -114,7 +114,7 @@ namespace WebPackTaskRunner
             return root;
         }
 
-        private TaskRunnerNode CreateTask(string cwd, string name, string desc, string args)
+        private TaskRunnerNode CreateTask(string configFileName, string cwd, string name, string desc, string args)
         {
             var task = new TaskRunnerNode(name, true)
             {
@@ -122,19 +122,24 @@ namespace WebPackTaskRunner
                 Command = GetCommand(cwd, args)
             };
 
-            ApplyOverrides(task);
+            ApplyOverrides(configFileName, task);
 
             return task;
         }
 
-        private void ApplyOverrides(ITaskRunnerNode parent)
+        private void ApplyOverrides(string configFileName, ITaskRunnerNode parent)
         {
-            var files = Directory.EnumerateFiles(parent.Command.WorkingDirectory).Where(f => f.Contains("webpack.") && f.EndsWith(".config.js", StringComparison.OrdinalIgnoreCase));
+            var currentExtensionMatch = Regex.Match(configFileName, "webpack\\.config\\.(?<ext>.+)$");
+            var currentExtension = currentExtensionMatch.Groups["ext"];
+
+            var files = Directory
+                .EnumerateFiles(parent.Command.WorkingDirectory)
+                .Where(f => f.Contains("webpack.") && f.EndsWith($".config.{currentExtension}", StringComparison.OrdinalIgnoreCase));
 
             foreach (string file in files)
             {
                 string fileName = Path.GetFileName(file);
-                Match match = Regex.Match(fileName, "webpack\\.(?<env>[^\\.]+)\\.config(\\.babel)?\\.js");
+                Match match = Regex.Match(fileName, $"webpack\\.(?<env>[^\\.]+)\\.config\\.{currentExtension}");
 
                 if (!match.Success)
                     continue;
