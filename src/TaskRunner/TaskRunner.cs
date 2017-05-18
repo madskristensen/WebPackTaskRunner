@@ -93,20 +93,20 @@ namespace WebPackTaskRunner
 
             // Serve
             TaskRunnerNode start = new TaskRunnerNode("Serve", false);
-            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot'", "/c SET NODE_ENV=development&& webpack-dev-server --hot");
+            TaskRunnerNode startDev = CreateTask(cwd, "Hot", "Runs 'webpack-dev-server --hot --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --hot --color");
             start.Children.Add(startDev);
 
-            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server'", "/c SET NODE_ENV=development&& webpack-dev-server");
+            TaskRunnerNode startProd = CreateTask(cwd, "Cold", "Runs 'webpack-dev-server --colors'", "/c SET NODE_ENV=development&& webpack-dev-server --color");
             start.Children.Add(startProd);
 
             root.Children.Add(start);
 
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
-            TaskRunnerNode watchDev = CreateTask(cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --watch --color");
+            TaskRunnerNode watchDev = CreateTask(cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --watch --colors");
             watch.Children.Add(watchDev);
 
-            TaskRunnerNode watchProd = CreateTask(cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --watch --color");
+            TaskRunnerNode watchProd = CreateTask(cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --watch --colors");
             watch.Children.Add(watchProd);
 
             root.Children.Add(watch);
