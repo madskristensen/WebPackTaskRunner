@@ -9,7 +9,7 @@ namespace WebPackTaskRunner
     {
         public const string Id = "471a020e-77f5-4c77-8ff0-59e08b6c5ba3";
         public const string Name = "WebPack Task Runner";
-        public const string Description = @"Adds support for WebPack in Visual Studio 2015's Task Runner Explorer.";
+        public const string Description = @"Adds support for WebPack in Visual Studio 2015 and 2017's Task Runner Explorer.";
         public const string Language = "en-US";
         public const string Version = "1.5";
         public const string Author = "Mads Kristensen";
