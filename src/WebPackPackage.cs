@@ -11,7 +11,7 @@ namespace WebPackTaskRunner
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration("#110", "#112", Vsix.Version, IconResourceID = 400)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideAutoLoad(ActivationContextGuid)]
+    [ProvideAutoLoad(ActivationContextGuid, PackageAutoLoadFlags.BackgroundLoad)]
     [ProvideUIContextRule(ActivationContextGuid, Vsix.Id,
         "( WAP | WebSite | DotNetCoreWeb | ProjectK | Cordova ) & !Node ",
         new string[] {
