@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="471a020e-77f5-4c77-8ff0-59e08b6c5ba3" Version="1.5" Language="en-US" Publisher="Mads Kristensen" />
         <DisplayName>WebPack Task Runner</DisplayName>
-        <Description xml:space="preserve">Adds support for WebPack in Visual Studio 2015 and 2017's Task Runner Explorer.</Description>
+        <Description xml:space="preserve">Adds support for WebPack in Visual Studio 2015 - 2022's Task Runner Explorer.</Description>
         <MoreInfo>https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a</MoreInfo>
         <License>Resources\LICENSE</License>
         <Icon>Resources\icon.png</Icon>
@@ -12,6 +12,9 @@
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,17.0)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
     </Installation>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
