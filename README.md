@@ -1,6 +1,6 @@
 # WebPack Task Runner extension
 Adds support for the [WebPack](https://webpack.github.io/)
-build tool in Visual Studio 2015 and Visual Studio 2017's Task Runner Explorer.
+build tool in Visual Studio 2015 - 2022's Task Runner Explorer.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/elr3xt8s6tuoth66?svg=true)](https://ci.appveyor.com/project/madskristensen/webpacktaskrunner)
 
