@@ -76,7 +76,6 @@
       <Link>Resources\LICENSE</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="ItemTemplates\WebPack\webpack.config.js" />
     <Content Include="source.extension.ico">
       <DependentUpon>source.extension.vsixmanifest</DependentUpon>
     </Content>
@@ -102,12 +101,6 @@
       <Generator>VsctGenerator</Generator>
       <LastGenOutput>VsCommandTable.cs</LastGenOutput>
     </VSCTCompile>
-    <Content Include="ItemTemplates\WebPack\icon.png" />
-    <Content Include="ItemTemplates\WebPack\preview.png" />
-    <Content Include="ItemTemplates\WebPack\_Definitions\CSharp.vstemplate" />
-    <Content Include="ItemTemplates\WebPack\_Definitions\VB.vstemplate" />
-    <Content Include="ItemTemplates\WebPack\_Definitions\Web.csharp.vstemplate" />
-    <Content Include="ItemTemplates\WebPack\_preprocess.xml" />
     <Content Include="Resources\icon.png">
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
