@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TaskRunnerExplorer;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,12 +8,11 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Microsoft.VisualStudio.TaskRunnerExplorer;
 
 namespace WebPackTaskRunner
 {
     [TaskRunnerExport("webpack.config.js", "webpack.config.babel.js", "webpack.config.ts", "webpack.config.coffee")]
-    class TaskRunner : ITaskRunner
+    internal class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
         private List<ITaskRunnerOption> _options = null;
@@ -29,14 +28,16 @@ namespace WebPackTaskRunner
 
         private void InitializeWebPackRunnerOptions()
         {
-            _options = new List<ITaskRunnerOption>();
-            _options.Add(new TaskRunnerOption("Display Modules", PackageIds.cmdDisplayModules, PackageGuids.guidWebPackPackageCmdSet, false, "--display-modules"));
-            _options.Add(new TaskRunnerOption("Display Reasons", PackageIds.cmdDisplayReasons, PackageGuids.guidWebPackPackageCmdSet, false, "--display-reasons"));
-            _options.Add(new TaskRunnerOption("Display Chunks", PackageIds.cmdDisplayChunks, PackageGuids.guidWebPackPackageCmdSet, false, "--display-chunks"));
-            _options.Add(new TaskRunnerOption("Display Error Details", PackageIds.cmdDisplayErrorDetails, PackageGuids.guidWebPackPackageCmdSet, false, "--display-error-details"));
-            _options.Add(new TaskRunnerOption("Bail", PackageIds.cmdBail, PackageGuids.guidWebPackPackageCmdSet, false, "--bail"));
-            _options.Add(new TaskRunnerOption("Inline", PackageIds.cmdInline, PackageGuids.guidWebPackPackageCmdSet, false, "--inline"));
-            _options.Add(new TaskRunnerOption("History API Fallback", PackageIds.cmdHistoryApi, PackageGuids.guidWebPackPackageCmdSet, false, "--history-api-fallback"));
+            _options = new List<ITaskRunnerOption>
+            {
+                new TaskRunnerOption("Display Modules", PackageIds.cmdDisplayModules, PackageGuids.guidWebPackPackageCmdSet, false, "--display-modules"),
+                new TaskRunnerOption("Display Reasons", PackageIds.cmdDisplayReasons, PackageGuids.guidWebPackPackageCmdSet, false, "--display-reasons"),
+                new TaskRunnerOption("Display Chunks", PackageIds.cmdDisplayChunks, PackageGuids.guidWebPackPackageCmdSet, false, "--display-chunks"),
+                new TaskRunnerOption("Display Error Details", PackageIds.cmdDisplayErrorDetails, PackageGuids.guidWebPackPackageCmdSet, false, "--display-error-details"),
+                new TaskRunnerOption("Bail", PackageIds.cmdBail, PackageGuids.guidWebPackPackageCmdSet, false, "--bail"),
+                new TaskRunnerOption("Inline", PackageIds.cmdInline, PackageGuids.guidWebPackPackageCmdSet, false, "--inline"),
+                new TaskRunnerOption("History API Fallback", PackageIds.cmdHistoryApi, PackageGuids.guidWebPackPackageCmdSet, false, "--history-api-fallback")
+            };
         }
 
         public List<ITaskRunnerOption> Options
@@ -124,7 +125,7 @@ namespace WebPackTaskRunner
 
         private TaskRunnerNode CreateTask(string configFileName, string cwd, string name, string desc, string args)
         {
-            var task = new TaskRunnerNode(name, true)
+            TaskRunnerNode task = new TaskRunnerNode(name, true)
             {
                 Description = desc,
                 Command = GetCommand(cwd, args)
@@ -137,10 +138,10 @@ namespace WebPackTaskRunner
 
         private void ApplyOverrides(string configFileName, ITaskRunnerNode parent)
         {
-            var currentExtensionMatch = Regex.Match(configFileName, "webpack\\.config\\.(?<ext>.+)$");
-            var currentExtension = currentExtensionMatch.Groups["ext"];
+            Match currentExtensionMatch = Regex.Match(configFileName, "webpack\\.config\\.(?<ext>.+)$");
+            Group currentExtension = currentExtensionMatch.Groups["ext"];
 
-            var files = Directory
+            IEnumerable<string> files = Directory
                 .EnumerateFiles(parent.Command.WorkingDirectory)
                 .Where(f => f.Contains("webpack.") && f.EndsWith($".config.{currentExtension}", StringComparison.OrdinalIgnoreCase));
 
@@ -150,9 +151,11 @@ namespace WebPackTaskRunner
                 Match match = Regex.Match(fileName, $"webpack\\.(?<env>[^\\.]+)\\.config\\.{currentExtension}");
 
                 if (!match.Success)
+                {
                     continue;
+                }
 
-                var task = new TaskRunnerNode($"config: {match.Groups["env"].Value}", true)
+                TaskRunnerNode task = new TaskRunnerNode($"config: {match.Groups["env"].Value}", true)
                 {
                     Description = $"Runs '{parent.Name} --config {fileName}'",
                     Command = GetCommand(parent.Command.WorkingDirectory, $"{parent.Command.Args.Replace("webpack ", $"webpack --config {fileName} ")}")
