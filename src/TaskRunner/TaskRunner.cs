@@ -70,14 +70,18 @@ namespace WebPackTaskRunner
 
             ITaskRunnerNode root = new TaskRunnerNode("WebPack");
 
-            const string DEFAULT_TASK_NAME = "Default";
+            const string DEVELOPMENT_TASK_NAME_OLD = "Development (old)";
+            const string PRODUCTION_TASK_NAME_OLD = "Production (old)";
             const string DEVELOPMENT_TASK_NAME = "Development";
             const string PRODUCTION_TASK_NAME = "Production";
 
             // Run
             TaskRunnerNode build = new TaskRunnerNode("Run", false);
-            TaskRunnerNode buildDefault = CreateTask(configFileName, cwd, $"{build.Name} - {DEFAULT_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --color");
-            build.Children.Add(buildDefault);
+            TaskRunnerNode buildDevOld = CreateTask(configFileName, cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME_OLD}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --color");
+            build.Children.Add(buildDevOld);
+
+            TaskRunnerNode buildProdOld = CreateTask(configFileName, cwd, $"{build.Name} - {PRODUCTION_TASK_NAME_OLD}", "Runs 'webpack '", "/c SET NODE_ENV=production&& webpack --color");
+            build.Children.Add(buildProdOld);
 
             TaskRunnerNode buildDev = CreateTask(configFileName, cwd, $"{build.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack '", "/c SET NODE_ENV=development&& webpack --mode=development --color");
             build.Children.Add(buildDev);
@@ -89,8 +93,11 @@ namespace WebPackTaskRunner
 
             // Profile
             TaskRunnerNode profile = new TaskRunnerNode("Profile", false);
-            TaskRunnerNode profileDefault = CreateTask(configFileName, cwd, $"{profile.Name} - {DEFAULT_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
-            profile.Children.Add(profileDefault);
+            TaskRunnerNode profileDevOld = CreateTask(configFileName, cwd, $"{profile.Name} - {DEVELOPMENT_TASK_NAME_OLD}", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            profile.Children.Add(profileDevOld);
+
+            TaskRunnerNode profileProdOld = CreateTask(configFileName, cwd, $"{profile.Name} - {PRODUCTION_TASK_NAME_OLD}", "Runs 'webpack --profile'", "/c SET NODE_ENV=production&& webpack --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
+            profile.Children.Add(profileProdOld);
 
             TaskRunnerNode profileDev = CreateTask(configFileName, cwd, $"{profile.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --profile'", "/c SET NODE_ENV=development&& webpack --mode=development --profile --json > stats.json && echo \x1B[32mThe analyse tool JSON file can be found at ./stats.json. Upload the file at http://webpack.github.io/analyse/.");
             profile.Children.Add(profileDev);
@@ -112,6 +119,12 @@ namespace WebPackTaskRunner
 
             // Watch
             TaskRunnerNode watch = new TaskRunnerNode("Watch", false);
+            TaskRunnerNode watchDevOld = CreateTask(configFileName, cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME_OLD}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --watch --color");
+            watch.Children.Add(watchDevOld);
+
+            TaskRunnerNode watchProdOld = CreateTask(configFileName, cwd, $"{watch.Name} - {PRODUCTION_TASK_NAME_OLD}", "Runs 'webpack --watch'", "/c SET NODE_ENV=production&& webpack --watch --color");
+            watch.Children.Add(watchProdOld);
+
             TaskRunnerNode watchDev = CreateTask(configFileName, cwd, $"{watch.Name} - {DEVELOPMENT_TASK_NAME}", "Runs 'webpack --watch'", "/c SET NODE_ENV=development&& webpack --mode=development --watch --color");
             watch.Children.Add(watchDev);
 
