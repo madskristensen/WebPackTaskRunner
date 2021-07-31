@@ -41,6 +41,7 @@ WebPack configuration files. The following file names
 are supported:
 
 - webpack.config.js
+- webpack.config.mjs
 - webpack.config.ts
 - webpack.config.coffee
 - webpack.config.babel.js
