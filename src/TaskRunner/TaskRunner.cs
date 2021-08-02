@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 
 namespace WebPackTaskRunner
 {
-    [TaskRunnerExport("webpack.config.js", "webpack.config.babel.js", "webpack.config.ts", "webpack.config.coffee")]
+    [TaskRunnerExport("webpack.config.js", "webpack.config.mjs", "webpack.config.babel.js", "webpack.config.ts", "webpack.config.coffee")]
     internal class TaskRunner : ITaskRunner
     {
         private static ImageSource _icon;
